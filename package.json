@@ -34,5 +34,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "<h1 align=\"center\">Hi 👋, I'm Rafael Tupiniquim Sena</h1> <h3 align=\"center\">A passionate frontend developer from Brazil</h3>",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
