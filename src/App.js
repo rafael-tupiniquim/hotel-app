@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  
+
   const [modoEdicao, setModoEdicao] = useState(false);
   const [idEdicao, setIdEdicao] = useState(null);
   const [reservas, setReservas] = useState([]);
@@ -117,98 +117,210 @@ function App() {
       console.log('Erro ao buscar endereço:', error);
     }
   };
-
+ 
+  
+ 
   return (
     <><div className="tab-content" id="pills-tabContent">
       <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-       
-      {reservas.length === 0 ? (
-          <p>Nenhuma reserva cadastrada.</p>
-        ) : (
-          <ul className="list-group">
-            {reservas.map((reserva) => (
-              <li
-                key={reserva.id}
-                className="list-group-item d-flex justify-content-between align-items-center"
-              >
-                {reserva.nome} - Check-in: {reserva.dataCheckIn} / Check-out: {reserva.dataCheckOut} / Endereço: {reserva.endereco}
-                <div>
-                  <button
-                    className="btn btn-sm btn-primary mr-2"
-                    onClick={() => editarReserva(reserva.id)}
-                  >
-                    Editar
-                  </button>
-                  <button
-                    className="btn btn-sm btn-danger"
-                    onClick={() => excluirReserva(reserva.id)}
-                  >
-                    Excluir
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-
-      </div>
-      <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      <h2 className="mt-4">Cadastro de Reservas</h2>
-        <form onSubmit={adicionarReserva} className="mt-4">
-          <div className="form-group">
-            <label htmlFor="nome">Nome:</label>
-            <input
+        <div id="contentAcomodacoes">
+          <div id="titleTable" className="row">
+            <div className="col-lg-5">Acomodação</div>
+            <div className="col-lg-2">Hóspedes</div>
+            <div className="col-lg-2">Check-in</div>
+            <div className="col-lg-2">Check-out</div>
+            <div className="col-lg-1"></div>
+            <div className="col-lg-12">
+              <div className="sepLine"></div>
+            </div>
+          </div>
+          {reservas.length === 0 ? (
+            <p>Nenhuma reserva cadastrada.</p>
+          ) : (
+            <div className="list-group">
+              {reservas.map((reserva) => (
+                <><div key={reserva.id} id="rowAcomodacao">
+                  <div className="row">
+                    <div className="col-lg-5">
+                      <ul id="picAcomodacaoHlist">
+                        <li>
+                          <img src="accommodations/Duplo-Luxo.jpg" className="img-fluid" alt="" />
+                        </li>
+                        <li>
+                          <span>#798419</span>
+                          <strong>Quarto Duplo Luxo</strong>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="col-lg-2">
+                      <div className="hospedeName">
+                        <strong>{reserva.nome}</strong>
+                        <span>2 adultos - 1 criança</span>
+                      </div>
+                    </div>
+                    <div className="col-lg-2">
+                      <div className="hospedeName">
+                        <strong>{reserva.dataCheckIn}</strong>
+                        <span>11:30</span>
+                      </div>
+                    </div>
+                    <div className="col-lg-2">
+                      <div className="hospedeName">
+                        <strong>{reserva.dataCheckOut}</strong>
+                        <span>11:30</span>
+                      </div>
+                    </div>
+                    <div className="col-lg-1">
+                      <div className="btn-group dropstart">
+                        <button type="button" className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i className="fa-solid fa-ellipsis"></i>
+                        </button>
+                        <ul className="dropdown-menu">
+                          <li>
+                            
+                            <button onClick={() => editarReserva(reserva.id)} type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              Editar
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              className="btn btn-sm btn-danger"
+                              onClick={() => excluirReserva(reserva.id)}
+                            >
+                              Excluir
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div><div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-xl">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLabel">Editando usuário <strong>{reserva.nome}</strong></h5>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                        <div id="contentAcomodacoes">
+          <form id="myForm" onSubmit={adicionarReserva} className="mt-4">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Dados da reserva</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div className="col-lg-3">
+              <label>Acomodação</label>
+              <select name="" id="" className="inputForm">
+                <option value="">Acomodação 01</option>
+                <option value="">Acomodação 02</option>
+                <option value="">Acomodação 03</option>
+              </select>
+            </div>
+            <div className="col-lg-3">
+              <label for="">Check-in</label>
+              <input
+              type="date"
+              className="inputForm"
+              id="dataCheckIn"
+              value={dataCheckIn}
+              onChange={(e) => setDataCheckIn(e.target.value)}
+              required />
+             
+            </div>
+            <div class="col-lg-3">
+              <label for="">Check-out</label>
+              <input
+              type="date"
+              className="inputForm"
+              id="dataCheckOut"
+              value={dataCheckOut}
+              onChange={(e) => setDataCheckOut(e.target.value)}
+              required />
+            </div>
+            <div class="col-lg-3">
+              <label for="">Hóspedes</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="mrg1">Dados do responsável</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-3">
+              <label>Nome</label>
+              <input
               type="text"
-              className="form-control"
+              className="inputForm"
               id="nome"
               placeholder="Digite o nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               required />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Sobrenome</label>
+              <input type="text"  className="inputForm"/>
+            </div>
+            <div className="col-lg-3">
+              <label for="">Documento</label>
+              <input type="text" className="inputForm" placeholder="CPF\Passaporte" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Data de Nascimento</label>
+              <input type="text" className="inputForm" />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="dataCheckIn">Data de Check-in:</label>
-            <input
-              type="date"
-              className="form-control"
-              id="dataCheckIn"
-              value={dataCheckIn}
-              onChange={(e) => setDataCheckIn(e.target.value)}
-              required />
+          <div className="row twoLine">
+            <div className="col-lg-3">
+              <label>Telefone</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">E-mail</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Sexo</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Nacionalidade</label>
+              <input type="text" className="inputForm" />
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="dataCheckOut">Data de Check-out:</label>
-            <input
-              type="date"
-              className="form-control"
-              id="dataCheckOut"
-              value={dataCheckOut}
-              onChange={(e) => setDataCheckOut(e.target.value)}
-              required />
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="mrg1">Endereço</h2>
+            </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="cep">CEP:</label>
-            <input
+          <div className="row">
+            <div className="col-lg-3">
+              <label>CEP</label>
+              <input
               type="text"
-              className="form-control"
+              className="inputForm"
               id="cep"
               placeholder="Digite o CEP"
               maxLength="8"
               onChange={handleCEPChange}
               required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="endereco">Endereço:</label>
-            <input
+            </div>
+            <div className="col-lg-5">
+              <label for="">Rua</label>
+              <input
               type="text"
-              className="form-control"
+              className="inputForm"
               id="endereco"
               placeholder="Digite o endereço"
               value={endereco}
               onChange={handleEnderecoChange}
               onKeyUp={handleEnderecoAutoComplete}
               required />
-            {enderecoAutoComplete.length > 0 && (
+              {enderecoAutoComplete.length > 0 && (
               <ul className="list-group endereco-autocomplete">
                 {enderecoAutoComplete.map((endereco) => (
                   <li
@@ -221,21 +333,294 @@ function App() {
                 ))}
               </ul>
             )}
+            </div>
+            <div className="col-lg-3">
+              <label for="">Bairro</label>
+              <input type="text" className="inputForm" placeholder="CPF\Passaporte" />
+            </div>
+            <div className="col-lg-1">
+              <label for="">Nº</label>
+              <input type="text" className="inputForm" />
+            </div>
           </div>
-          <button type="submit" className="btn btn-primary">
-            {modoEdicao ? 'Editar Reserva' : 'Adicionar Reserva'}
+          <div className="row twoLine">
+            <div className="col-lg-3">
+              <label>Cidade</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Estado</label>
+              <select id="estado" className="inputForm" name="estado">
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+                <option value="EX">Estrangeiro</option>
+              </select>
+            </div>
+            <div className="col-lg-3">
+              <label for="">Complemento</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Referência</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div class="row">
+              <div className="col-lg-3 offset-lg-6">                  
+                  <button type="submit" class="submitButton" >
+                    {modoEdicao ? 'Atualizar' : 'Usuário alterado!'}
+                  </button>          
+              </div>
+              <div className="col-lg-3">
+              <button type="button" className="submitButton" data-bs-dismiss="modal">Fechar</button>
+              </div>
+          </div>
+          </form>
+        </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div></>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div id="contentAcomodacoes">
+          <form onSubmit={adicionarReserva} className="mt-4">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>Dados da reserva</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div className="col-lg-3">
+              <label>Acomodação</label>
+              <select name="" id="" className="inputForm">
+                <option value="">Acomodação 01</option>
+                <option value="">Acomodação 02</option>
+                <option value="">Acomodação 03</option>
+              </select>
+            </div>
+            <div className="col-lg-3">
+              <label for="">Check-in</label>
+              <input
+              type="date"
+              className="inputForm"
+              id="dataCheckIn"
+              value={dataCheckIn}
+              onChange={(e) => setDataCheckIn(e.target.value)}
+              required />
+             
+            </div>
+            <div class="col-lg-3">
+              <label for="">Check-out</label>
+              <input
+              type="date"
+              className="inputForm"
+              id="dataCheckOut"
+              value={dataCheckOut}
+              onChange={(e) => setDataCheckOut(e.target.value)}
+              required />
+            </div>
+            <div class="col-lg-3">
+              <label for="">Hóspedes</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="mrg1">Dados do responsável</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-3">
+              <label>Nome</label>
+              <input
+              type="text"
+              className="inputForm"
+              id="nome"
+              placeholder="Digite o nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Sobrenome</label>
+              <input type="text"  className="inputForm"/>
+            </div>
+            <div className="col-lg-3">
+              <label for="">Documento</label>
+              <input type="text" className="inputForm" placeholder="CPF\Passaporte" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Data de Nascimento</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div className="row twoLine">
+            <div className="col-lg-3">
+              <label>Telefone</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">E-mail</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Sexo</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Nacionalidade</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="mrg1">Endereço</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-3">
+              <label>CEP</label>
+              <input
+              type="text"
+              className="inputForm"
+              id="cep"
+              placeholder="Digite o CEP"
+              maxLength="8"
+              onChange={handleCEPChange}
+              required />
+            </div>
+            <div className="col-lg-5">
+              <label for="">Rua</label>
+              <input
+              type="text"
+              className="inputForm"
+              id="endereco"
+              placeholder="Digite o endereço"
+              value={endereco}
+              onChange={handleEnderecoChange}
+              onKeyUp={handleEnderecoAutoComplete}
+              required />
+              {enderecoAutoComplete.length > 0 && (
+              <ul className="list-group endereco-autocomplete">
+                {enderecoAutoComplete.map((endereco) => (
+                  <li
+                    key={endereco.cep}
+                    className="list-group-item"
+                    onClick={() => setEndereco(endereco.logradouro)}
+                  >
+                    {`${endereco.logradouro}, ${endereco.bairro}, ${endereco.localidade} - ${endereco.uf}`}
+                  </li>
+                ))}
+              </ul>
+            )}
+            </div>
+            <div className="col-lg-3">
+              <label for="">Bairro</label>
+              <input type="text" className="inputForm" placeholder="CPF\Passaporte" />
+            </div>
+            <div className="col-lg-1">
+              <label for="">Nº</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div className="row twoLine">
+            <div className="col-lg-3">
+              <label>Cidade</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Estado</label>
+              <select id="estado" className="inputForm" name="estado">
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+                <option value="EX">Estrangeiro</option>
+              </select>
+            </div>
+            <div className="col-lg-3">
+              <label for="">Complemento</label>
+              <input type="text" className="inputForm" />
+            </div>
+            <div className="col-lg-3">
+              <label for="">Referência</label>
+              <input type="text" className="inputForm" />
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-3 offset-lg-9">
+                  
+                  <button type="submit" class="submitButton" >
+            {modoEdicao ? 'Atualizar' : 'Adicionar Reserva'}
           </button>
-          <button
-            type="button"
-            className="btn btn-secondary ml-2"
-            onClick={limparFormulario}
-          >
-            Limpar
-          </button>
-        </form>
+              </div>
+          </div>
+          </form>
+        </div>
+
       </div>
       <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-        tab3
+        <div id="contentAcomodacoes">
+          <div className="row">
+            <div className="col-lg-12">
+              <h2 className="mrg1">Configurações</h2>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     </>
