@@ -119,124 +119,126 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h2 className="mt-4">Cadastro de Reservas</h2>
-
-      <form onSubmit={adicionarReserva} className="mt-4">
-        <div className="form-group">
-          <label htmlFor="nome">Nome:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="nome"
-            placeholder="Digite o nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="dataCheckIn">Data de Check-in:</label>
-          <input
-            type="date"
-            className="form-control"
-            id="dataCheckIn"
-            value={dataCheckIn}
-            onChange={(e) => setDataCheckIn(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="dataCheckOut">Data de Check-out:</label>
-          <input
-            type="date"
-            className="form-control"
-            id="dataCheckOut"
-            value={dataCheckOut}
-            onChange={(e) => setDataCheckOut(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="cep">CEP:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="cep"
-            placeholder="Digite o CEP"
-            maxLength="8"
-            onChange={handleCEPChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="endereco">Endereço:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="endereco"
-            placeholder="Digite o endereço"
-            value={endereco}
-            onChange={handleEnderecoChange}
-            onKeyUp={handleEnderecoAutoComplete}
-            required
-          />
-          {enderecoAutoComplete.length > 0 && (
-            <ul className="list-group endereco-autocomplete">
-              {enderecoAutoComplete.map((endereco) => (
-                <li
-                  key={endereco.cep}
-                  className="list-group-item"
-                  onClick={() => setEndereco(endereco.logradouro)}
-                >
-                  {`${endereco.logradouro}, ${endereco.bairro}, ${endereco.localidade} - ${endereco.uf}`}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <button type="submit" className="btn btn-primary">
-          {modoEdicao ? 'Editar Reserva' : 'Adicionar Reserva'}
-        </button>
-        <button
-          type="button"
-          className="btn btn-secondary ml-2"
-          onClick={limparFormulario}
-        >
-          Limpar
-        </button>
-      </form>
-
-      <h3 className="mt-4">Reservas:</h3>
+    <><div className="tab-content" id="pills-tabContent">
+      <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+       
       {reservas.length === 0 ? (
-        <p>Nenhuma reserva cadastrada.</p>
-      ) : (
-        <ul className="list-group">
-          {reservas.map((reserva) => (
-            <li
-              key={reserva.id}
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              {reserva.nome} - Check-in: {reserva.dataCheckIn} / Check-out: {reserva.dataCheckOut} / Endereço: {reserva.endereco}
-              <div>
-                <button
-                  className="btn btn-sm btn-primary mr-2"
-                  onClick={() => editarReserva(reserva.id)}
-                >
-                  Editar
-                </button>
-                <button
-                  className="btn btn-sm btn-danger"
-                  onClick={() => excluirReserva(reserva.id)}
-                >
-                  Excluir
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+          <p>Nenhuma reserva cadastrada.</p>
+        ) : (
+          <ul className="list-group">
+            {reservas.map((reserva) => (
+              <li
+                key={reserva.id}
+                className="list-group-item d-flex justify-content-between align-items-center"
+              >
+                {reserva.nome} - Check-in: {reserva.dataCheckIn} / Check-out: {reserva.dataCheckOut} / Endereço: {reserva.endereco}
+                <div>
+                  <button
+                    className="btn btn-sm btn-primary mr-2"
+                    onClick={() => editarReserva(reserva.id)}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={() => excluirReserva(reserva.id)}
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+
+      </div>
+      <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <h2 className="mt-4">Cadastro de Reservas</h2>
+        <form onSubmit={adicionarReserva} className="mt-4">
+          <div className="form-group">
+            <label htmlFor="nome">Nome:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="nome"
+              placeholder="Digite o nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="dataCheckIn">Data de Check-in:</label>
+            <input
+              type="date"
+              className="form-control"
+              id="dataCheckIn"
+              value={dataCheckIn}
+              onChange={(e) => setDataCheckIn(e.target.value)}
+              required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="dataCheckOut">Data de Check-out:</label>
+            <input
+              type="date"
+              className="form-control"
+              id="dataCheckOut"
+              value={dataCheckOut}
+              onChange={(e) => setDataCheckOut(e.target.value)}
+              required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="cep">CEP:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="cep"
+              placeholder="Digite o CEP"
+              maxLength="8"
+              onChange={handleCEPChange}
+              required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="endereco">Endereço:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="endereco"
+              placeholder="Digite o endereço"
+              value={endereco}
+              onChange={handleEnderecoChange}
+              onKeyUp={handleEnderecoAutoComplete}
+              required />
+            {enderecoAutoComplete.length > 0 && (
+              <ul className="list-group endereco-autocomplete">
+                {enderecoAutoComplete.map((endereco) => (
+                  <li
+                    key={endereco.cep}
+                    className="list-group-item"
+                    onClick={() => setEndereco(endereco.logradouro)}
+                  >
+                    {`${endereco.logradouro}, ${endereco.bairro}, ${endereco.localidade} - ${endereco.uf}`}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <button type="submit" className="btn btn-primary">
+            {modoEdicao ? 'Editar Reserva' : 'Adicionar Reserva'}
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary ml-2"
+            onClick={limparFormulario}
+          >
+            Limpar
+          </button>
+        </form>
+      </div>
+      <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        tab3
+      </div>
     </div>
+    </>
   );
 }
 
