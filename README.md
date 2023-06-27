@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Rafael Tupiniquim Sena</h1>
-<h3 align="center">A passionate frontend developer from Brazil</h3>
+<h3 align="center">Para iniciar o projeto se faz necessário ter isntalado o Node.js e executar o comando "npm start" dentro do diretório "hotel-app"</h3>
 
 - 🔭 I’m currently working on [Hotel - Foco Multimidia](https://github.com/rafael-tupiniquim/hotel-app)
 
