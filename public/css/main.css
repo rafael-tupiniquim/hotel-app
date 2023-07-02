@@ -1,55 +1,63 @@
 body {
-    margin:0;
+    margin: 0;
     padding: 0;
-    background:#dbdbdb !important;
-    padding:30px;
+    background: #dbdbdb !important;
+    padding: 30px;
     font-family: 'Rubik', sans-serif;
 }
-.rightContainer {    
+
+.rightContainer {
     padding-top: 30px;
     background: #f3f4f9;
     -webkit-border-bottom-right-radius: 25px;
--moz-border-radius-bottomright: 25px;
-border-bottom-right-radius: 25px;
+    -moz-border-radius-bottomright: 25px;
+    border-bottom-right-radius: 25px;
 }
+
 .leftContainer {
-    padding-top:30px;
-    background:#fff;
+    padding-top: 30px;
+    background: #fff;
     -webkit-border-bottom-left-radius: 25px;
--moz-border-radius-bottomleft: 25px;
-border-bottom-left-radius: 25px;
+    -moz-border-radius-bottomleft: 25px;
+    border-bottom-left-radius: 25px;
 }
+
 nav {
-    background:#fff;
+    background: #fff;
     -webkit-border-top-left-radius: 25px;
     -webkit-border-top-right-radius: 25px;
     -moz-border-radius-topleft: 25px;
     -moz-border-radius-topright: 25px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    border-bottom:solid 1px #bcc2d0;
+    border-bottom: solid 1px #bcc2d0;
     padding: 10px;
 }
+
 nav ul {
     margin: 0;
     padding: 0;
     text-align: right;
 }
+
 nav ul li {
     list-style: none;
     display: inline-block;
 }
+
 nav img {
     width: 117px;
     margin-left: 16px;
     margin-top: 7px;
     margin-bottom: 7px;
 }
+
 ul#pills-tab li {
     display: block;
     width: 100%;
     margin-bottom: 25px;
 }
+
 ul#pills-tab li button {
     width: 100%;
     text-align: left;
@@ -63,8 +71,9 @@ ul#pills-tab li button {
     border-bottom-right-radius: 15px;
     padding: 13px;
     padding-left: 30px;
-    color:#566589;
+    color: #566589;
 }
+
 ul#pills-tab li button i {
     margin-right: 15px;
     font-size: 20px;
@@ -78,6 +87,7 @@ ul#pills-tab li button.active {
     background: #dde4f7;
     border-left: solid 7px;
 }
+
 #contentAcomodacoes {
     background: #fff;
     border: solid 1px #dde0e7;
@@ -86,50 +96,62 @@ ul#pills-tab li button.active {
     padding: 16px;
     border-radius: 15px;
 }
+
 ul#picAcomodacaoHlist {
     margin: 0;
     padding: 0;
 }
+
 ul#picAcomodacaoHlist li {
     list-style: none;
     display: inline-block;
     float: left;
 }
+
 ul#picAcomodacaoHlist li:first-child {
     width: 130px;
 }
+
 ul#picAcomodacaoHlist li img {
     border-radius: 15px;
 }
+
 ul#picAcomodacaoHlist li:last-child strong {
     font-size: 16px;
-    color:#1d3161;
+    color: #1d3161;
 }
+
 ul#picAcomodacaoHlist li:last-child span {
-    color:#5582eb;
-    display:block;
+    color: #5582eb;
+    display: block;
 }
+
 ul#picAcomodacaoHlist li:last-child {
     line-height: 18px;
     padding-top: 17px;
     padding-left: 20px;
 }
+
 .hospedeName strong {
     font-size: 14px;
-    color:#1d3161;
+    color: #1d3161;
     display: block;
 }
+
 .hospedeName span {
     color: #adadad;
     font-size: 13px;
 }
+
 .hospedeName {
     line-height: 18px;
     padding-top: 17px;
 }
+
 .dropstart .dropdown-toggle::before {
     display: none !important;
 }
+
 button.dropdown-toggle {
     border: none;
     background: none;
@@ -137,6 +159,7 @@ button.dropdown-toggle {
     color: #566589;
     margin-top: 16px;
 }
+
 #rowAcomodacao {
     display: block;
     width: 100%;
@@ -144,19 +167,23 @@ button.dropdown-toggle {
     margin-bottom: 30px;
     padding-bottom: 30px;
 }
+
 #rowAcomodacao:last-child {
     border: none;
     margin: 0;
     padding: 0;
 }
+
 #rowAcomodacao:hover {
-   opacity: 0.8;
+    opacity: 0.8;
 }
+
 #titleTable {
     padding-top: 3px;
     font-weight: 500;
-    color:#566589;
+    color: #566589;
 }
+
 h2 {
     margin: 0;
     padding: 0;
@@ -164,9 +191,10 @@ h2 {
     border-bottom: solid 5px #dde0e7;
     display: inline-block;
     padding-bottom: 5px;
-    color:#1d3161;
+    color: #1d3161;
     margin-bottom: 20px;
 }
+
 h2::after {
     display: block;
     width: 75px;
@@ -176,6 +204,7 @@ h2::after {
     position: relative;
     bottom: -10px;
 }
+
 .inputForm {
     width: 100%;
     border: solid 1px #dde0e7;
@@ -183,20 +212,25 @@ h2::after {
     color: #8e98b0;
     padding: 10PX;
 }
+
 form label {
-    color:#1d3161;
+    color: #1d3161;
     display: block;
     margin-bottom: 5px;
 }
+
 .mrg1 {
-    margin-top:24px;
+    margin-top: 24px;
 }
+
 .twoLine {
-    margin-top:20px
+    margin-top: 20px
 }
+
 hr {
     margin-bottom: 25px;
 }
+
 .submitButton {
     background: #5582eb;
     color: #fff;
@@ -208,9 +242,11 @@ hr {
     font-size: 18px;
     margin-top: 20px;
 }
+
 .submitButton:hover {
-    background:#3b68cf;
+    background: #3b68cf;
 }
+
 .sepLine {
     display: block;
     width: 100%;
@@ -219,11 +255,13 @@ hr {
     margin-top: 18px;
     margin-bottom: 25px;
 }
+
 .modal-body #contentAcomodacoes {
     margin: 0;
     padding: 0;
-    border:none;
+    border: none;
 }
+
 .modal-body #contentAcomodacoes .mt-4 {
     margin: 0 !important;
 }
